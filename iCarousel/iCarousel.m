@@ -1748,6 +1748,10 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     }
 }
 
+- (CGFloat)easeOut:(CGFloat)time {
+    return time * (2 - time);
+}
+
 - (CGFloat)easeInOut:(CGFloat)time
 {
     return (time < 0.5)? 0.5 * pow(time * 2.0, 3.0): 0.5 * pow(time * 2.0 - 2.0, 3.0) + 1.0;
@@ -1763,7 +1767,14 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     if (_scrolling && !_dragging)
     {
         NSTimeInterval time = MIN(1.0, (currentTime - _startTime) / _scrollDuration);
-        delta = [self easeInOut:time];
+        switch (self.scrollAnimation) {
+            case iCarouselScrollAnimationEaseInOut:
+                delta = [self easeInOut:time];
+                break;
+            case iCarouselScrollAnimationEaseOut:
+                delta = [self easeOut: time];
+                break;
+        }
         _scrollOffset = _startOffset + (_endOffset - _startOffset) * delta;
         [self didScroll];
         if (time >= 1.0)

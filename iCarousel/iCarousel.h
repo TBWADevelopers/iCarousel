@@ -100,6 +100,11 @@ typedef NS_ENUM(NSInteger, iCarouselOption)
     iCarouselOptionFadeMinAlpha
 };
 
+typedef NS_ENUM(NSInteger, iCarouselScrollAnimation)
+{
+    iCarouselScrollAnimationEaseInOut,
+    iCarouselScrollAnimationEaseOut
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -114,6 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat decelerationRate;
 @property (nonatomic, assign) CGFloat scrollSpeed;
 @property (nonatomic, assign) CGFloat bounceDistance;
+@property (nonatomic, assign) iCarouselScrollAnimation scrollAnimation;
 @property (nonatomic, assign, getter = isScrollEnabled) BOOL scrollEnabled;
 @property (nonatomic, assign, getter = isPagingEnabled) BOOL pagingEnabled;
 @property (nonatomic, assign, getter = isVertical) BOOL vertical;
