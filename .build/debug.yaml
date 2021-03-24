@@ -1,0 +1,33 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "iCarousel-debug.module": ["<iCarousel-debug.module>"]
+  "main": ["<iCarousel-debug.module>"]
+  "test": ["<iCarousel-debug.module>"]
+default: "main"
+nodes:
+  "/Users/vadym/Projects/iCarousel/iCarousel/":
+    is-directory-structure: true
+commands:
+  "/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/iCarousel.build/iCarousel.m.o":
+    tool: clang
+    inputs: ["/Users/vadym/Projects/iCarousel/iCarousel/iCarousel.m"]
+    outputs: ["/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/iCarousel.build/iCarousel.m.o"]
+    description: "Compiling iCarousel iCarousel.m"
+    args: ["/Users/vadym/Downloads/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang","-fobjc-arc","-target","x86_64-apple-macosx10.10","-isysroot","/Users/vadym/Downloads/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk","-F","/Users/vadym/Downloads/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-fPIC","-g","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-index-store-path","/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/index/store","-fmodules","-fmodule-name=iCarousel","-I","/Users/vadym/Projects/iCarousel/iCarousel/include","-fmodules-cache-path=/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/ModuleCache","-MD","-MT","dependencies","-MF","/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/iCarousel.build/iCarousel.m.d","-c","/Users/vadym/Projects/iCarousel/iCarousel/iCarousel.m","-o","/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/iCarousel.build/iCarousel.m.o"]
+    deps: "/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/iCarousel.build/iCarousel.m.d"
+
+  "<iCarousel-debug.module>":
+    tool: phony
+    inputs: ["/Users/vadym/Projects/iCarousel/.build/x86_64-apple-macosx/debug/iCarousel.build/iCarousel.m.o"]
+    outputs: ["<iCarousel-debug.module>"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/vadym/Projects/iCarousel/iCarousel/","/Users/vadym/Projects/iCarousel/Package.swift","/Users/vadym/Projects/iCarousel/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
